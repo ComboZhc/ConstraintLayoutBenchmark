@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/feed_component_topic_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:addStatesFromChildren="true"
+        android:background="?attr/selectableItemBackground"
+        tools:ignore="Overdraw">
+
+        <TextView
+            android:id="@+id/feed_component_topic_storyline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="4"
+            android:textAlignment="viewStart"
+            app:layout_constraintBottom_toTopOf="@+id/feed_component_topic_insight"
+            app:layout_constraintEnd_toStartOf="@+id/feed_component_topic_cover"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Pokemon Go Takes Over The World \uD83D\uDE00 The location-based mobile game creates Augmented Reality history. And to make this line long enough, I am just saying meaningless stuff. Like Happy Wednesday!"/>
+
+        <TextView
+            android:id="@+id/feed_component_topic_insight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/feed_component_topic_storyline"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/feed_component_topic_cover"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/feed_component_topic_storyline"
+            tools:text="Top News"/>
+
+        <ImageView
+            android:id="@+id/feed_component_topic_cover"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
+            android:gravity="start"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            android:src="#FFB3B6B9"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/feed_component_topic_storyline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:visibility="visible"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>
