@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<com.constraintlayout.cazhang.constraintlayout.BenchmarkConstraintLayout
     android:id="@+id/feed_component_topic_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,39 +13,49 @@
 
     <TextView
         android:id="@+id/feed_component_topic_storyline"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:layout_toStartOf="@+id/feed_component_topic_cover"
+
         android:ellipsize="end"
         android:gravity="start"
         android:maxLines="4"
+        android:text="Pokemon Go Takes Over The World \uD83D\uDE00 The location-based mobile game creates Augmented Reality history. And to make this line long enough, I am just saying meaningless stuff. Like Happy Wednesday!"
         android:textAlignment="viewStart"
-        tools:text="Pokemon Go Takes Over The World \uD83D\uDE00 The location-based mobile game creates Augmented Reality history. And to make this line long enough, I am just saying meaningless stuff. Like Happy Wednesday!"/>
+        app:layout_constraintBottom_toTopOf="@+id/feed_component_topic_insight"
+        app:layout_constraintEnd_toStartOf="@+id/feed_component_topic_cover"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed"/>
 
     <TextView
         android:id="@+id/feed_component_topic_insight"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@id/feed_component_topic_storyline"
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
-        android:layout_toStartOf="@+id/feed_component_topic_cover"
+
         android:gravity="start"
+        android:text="Top News"
         android:textAlignment="viewStart"
-        tools:text="Top News"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/feed_component_topic_cover"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feed_component_topic_storyline"/>
 
     <ImageView
         android:id="@+id/feed_component_topic_cover"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
+
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginTop="12dp"
@@ -52,6 +63,9 @@
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"
         android:src="#FFB3B6B9"
-        android:visibility="gone"
-        tools:visibility="visible"/>
-</RelativeLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/feed_component_topic_storyline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+</com.constraintlayout.cazhang.constraintlayout.BenchmarkConstraintLayout>

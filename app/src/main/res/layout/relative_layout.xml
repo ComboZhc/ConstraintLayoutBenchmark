@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.constraintlayout.cazhang.constraintlayout.BenchmarkRelativeLayout
+    android:id="@+id/feed_component_topic_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:addStatesFromChildren="true"
+    android:background="?attr/selectableItemBackground"
+    tools:ignore="Overdraw">
+
+    <TextView
+        android:id="@+id/feed_component_topic_storyline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_toStartOf="@+id/feed_component_topic_cover"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:maxLines="4"
+        android:text="Pokemon Go Takes Over The World \uD83D\uDE00 The location-based mobile game creates Augmented Reality history. And to make this line long enough, I am just saying meaningless stuff. Like Happy Wednesday!"
+        android:textAlignment="viewStart"/>
+
+    <TextView
+        android:id="@+id/feed_component_topic_insight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/feed_component_topic_storyline"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_toStartOf="@+id/feed_component_topic_cover"
+        android:gravity="start"
+        android:text="Top News"
+        android:textAlignment="viewStart"/>
+
+    <ImageView
+        android:id="@+id/feed_component_topic_cover"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="12dp"
+        android:gravity="start"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="#FFB3B6B9"/>
+</com.constraintlayout.cazhang.constraintlayout.BenchmarkRelativeLayout>
