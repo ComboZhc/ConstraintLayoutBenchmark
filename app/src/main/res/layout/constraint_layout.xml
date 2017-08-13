@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <com.constraintlayout.cazhang.constraintlayout.BenchmarkConstraintLayout
     android:id="@+id/feed_component_topic_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,12 +14,10 @@
         android:id="@+id/feed_component_topic_storyline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-
         android:ellipsize="end"
         android:gravity="start"
         android:maxLines="4"
@@ -30,7 +27,6 @@
         app:layout_constraintEnd_toStartOf="@+id/feed_component_topic_cover"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_chainStyle="packed"/>
 
     <TextView
@@ -42,7 +38,6 @@
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
-
         android:gravity="start"
         android:text="Top News"
         android:textAlignment="viewStart"
@@ -55,7 +50,6 @@
         android:id="@+id/feed_component_topic_cover"
         android:layout_width="100dp"
         android:layout_height="100dp"
-
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginTop="12dp"
@@ -66,6 +60,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/feed_component_topic_storyline"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 </com.constraintlayout.cazhang.constraintlayout.BenchmarkConstraintLayout>

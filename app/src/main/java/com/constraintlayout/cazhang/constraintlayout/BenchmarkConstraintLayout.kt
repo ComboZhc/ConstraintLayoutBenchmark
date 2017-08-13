@@ -1,7 +1,6 @@
 package com.constraintlayout.cazhang.constraintlayout
 
 import android.content.Context
-import android.graphics.Canvas
 import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 
@@ -23,11 +22,5 @@ class BenchmarkConstraintLayout : ConstraintLayout {
         BenchmarkActivity.onLayoutStart = System.nanoTime()
         super.onLayout(changed, left, top, right, bottom)
         BenchmarkActivity.onLayoutEnd = System.nanoTime()
-    }
-
-    override fun onDraw(canvas: Canvas) {
-        BenchmarkActivity.onDrawStart = System.nanoTime()
-        super.onDraw(canvas)
-        BenchmarkActivity.onDrawEnd = System.nanoTime()
     }
 }
