@@ -1,8 +1,11 @@
 package com.constraintlayout.cazhang.constraintlayout
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
+import android.view.FrameMetrics
 import android.view.View
+import android.view.Window
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -10,6 +13,10 @@ import android.widget.TextView
 class BenchmarkActivity : AppCompatActivity() {
 
     val MS_TO_NS = 1000000.0
+    val frameMetricsListener = Window.OnFrameMetricsAvailableListener {
+        _, frameMetrics, _ ->
+        layoutMeasureDuration += frameMetrics.getMetric(FrameMetrics.LAYOUT_MEASURE_DURATION)
+    }
 
     lateinit var containerView: FrameLayout
     lateinit var infoView: TextView
@@ -25,6 +32,8 @@ class BenchmarkActivity : AppCompatActivity() {
         var inflateTotal: Double = 0.0
         var measureTotal: Double = 0.0
         var layoutTotal: Double = 0.0
+
+        var layoutMeasureDuration: Long = 0
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +56,8 @@ class BenchmarkActivity : AppCompatActivity() {
         inflateTotal = 0.0
         measureTotal = 0.0
         layoutTotal = 0.0
+        layoutMeasureDuration = 0
+        window.addOnFrameMetricsAvailableListener(frameMetricsListener, Handler())
     }
 
     private fun benchmark(currentRun: Int, totalRun: Int, layoutId: Int) {
@@ -67,10 +78,12 @@ class BenchmarkActivity : AppCompatActivity() {
                 containerView.removeAllViews()
                 infoView.setText(
                         "Total Run: " + totalRun + "\n"
-                        + "Layout inflation: " + inflateTotal / totalRun / MS_TO_NS + " ms\n"
-                        + "onMeasure: " + measureTotal / totalRun / MS_TO_NS + " ms\n"
-                        + "onLayout: " + layoutTotal / totalRun / MS_TO_NS + " ms\n"
+                        + "inflation avg: " + inflateTotal / totalRun / MS_TO_NS + " ms\n"
+                        + "custom onMeasure: " + measureTotal / totalRun / MS_TO_NS + " ms\n"
+                        + "custom onLayout: " + layoutTotal / totalRun / MS_TO_NS + " ms\n"
+                        + "frameMetrics layoutMeasure: " + layoutMeasureDuration / totalRun / MS_TO_NS + " ms\n"
                 )
+                window.removeOnFrameMetricsAvailableListener(frameMetricsListener)
             }
         }, 250)
     }
