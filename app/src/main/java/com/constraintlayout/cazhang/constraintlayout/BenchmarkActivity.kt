@@ -44,11 +44,11 @@ class BenchmarkActivity : AppCompatActivity() {
         val totalRunTextView : EditText = findViewById<EditText>(R.id.total_run)
         findViewById<View>(R.id.button_cl).setOnClickListener {
             reset()
-            benchmark(1, Integer.valueOf(totalRunTextView.text.toString()), R.layout.constraint_layout)
+            benchmark(1, Integer.valueOf(totalRunTextView.text.toString()), R.layout.constraint_layout, "CL")
         }
         findViewById<View>(R.id.button_rl).setOnClickListener {
             reset()
-            benchmark(1, Integer.valueOf(totalRunTextView.text.toString()), R.layout.relative_layout)
+            benchmark(1, Integer.valueOf(totalRunTextView.text.toString()), R.layout.relative_layout, "RL")
         }
     }
 
@@ -60,7 +60,7 @@ class BenchmarkActivity : AppCompatActivity() {
         window.addOnFrameMetricsAvailableListener(frameMetricsListener, Handler())
     }
 
-    private fun benchmark(currentRun: Int, totalRun: Int, layoutId: Int) {
+    private fun benchmark(currentRun: Int, totalRun: Int, layoutId: Int, type: String) {
         inflateStart = System.nanoTime()
         val layout = layoutInflater.inflate(layoutId, containerView, false)
         inflateEnd = System.nanoTime()
@@ -72,12 +72,12 @@ class BenchmarkActivity : AppCompatActivity() {
             if (currentRun < totalRun) {
                 containerView.removeAllViews()
                 containerView.postDelayed({
-                    benchmark(currentRun + 1, totalRun, layoutId)
+                    benchmark(currentRun + 1, totalRun, layoutId, type)
                 }, 250)
             } else {
                 containerView.removeAllViews()
                 infoView.setText(
-                        "Total Run: " + totalRun + "\n"
+                        "" + totalRun + " runs of " + type + "\n"
                         + "inflation avg: " + inflateTotal / totalRun / MS_TO_NS + " ms\n"
                         + "custom onMeasure: " + measureTotal / totalRun / MS_TO_NS + " ms\n"
                         + "custom onLayout: " + layoutTotal / totalRun / MS_TO_NS + " ms\n"
