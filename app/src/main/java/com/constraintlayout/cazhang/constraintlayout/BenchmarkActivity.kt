@@ -6,15 +6,14 @@ import android.view.FrameMetrics
 import android.view.View
 import android.view.Window
 import android.widget.FrameLayout
-import android.widget.NumberPicker
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
+private const val MS_TO_NS = 1000000.0
 
 class BenchmarkActivity : AppCompatActivity() {
 
-    private val MS_TO_NS = 1000000.0
     private val frameMetricsListener = Window.OnFrameMetricsAvailableListener {
         _, frameMetrics, _ ->
         layoutMeasureDuration += frameMetrics.getMetric(FrameMetrics.LAYOUT_MEASURE_DURATION)
@@ -67,17 +66,13 @@ class BenchmarkActivity : AppCompatActivity() {
     }
 
     private fun showRunPicker(runWithTimes: (Int) -> Unit) {
-        val numberPicker = NumberPicker(this).apply {
-            maxValue = 1000
-            minValue = 1
-        }
-
+        val items = arrayOf("1", "10", "100", "1000")
         val builder = AlertDialog.Builder(this).apply {
             setTitle("How many times do you want to run?")
-            setPositiveButton("Run!") { _, _ ->
-                runWithTimes(numberPicker.value)
+            setSingleChoiceItems(items, -1) { dialog, position ->
+                runWithTimes(items[position].toInt())
+                dialog.cancel()
             }
-            setView(numberPicker)
         }
         builder.create().show()
     }
