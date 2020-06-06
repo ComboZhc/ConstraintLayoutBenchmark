@@ -1,8 +1,8 @@
 package com.constraintlayout.cazhang.constraintlayout
 
 import android.content.Context
-import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class BenchmarkConstraintLayout : ConstraintLayout {
 
