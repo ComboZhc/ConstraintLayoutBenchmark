@@ -9,6 +9,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.chaozhang.layouts.BenchmarkableView
 
 private const val MS_TO_NS = 1000000.0
 
@@ -25,10 +26,6 @@ class BenchmarkActivity : AppCompatActivity() {
     companion object {
         var inflateStart: Long = 0
         var inflateEnd: Long = 0
-        var onMeasureStart: Long = 0
-        var onMeasureEnd: Long = 0
-        var onLayoutStart: Long = 0
-        var onLayoutEnd: Long = 0
 
         var inflateTotal: Double = 0.0
         var measureTotal: Double = 0.0
@@ -45,14 +42,14 @@ class BenchmarkActivity : AppCompatActivity() {
         findViewById<View>(R.id.button_cl).setOnClickListener {
             reset()
             showRunPicker { times ->
-                benchmark(1, times, R.layout.constraint_layout, "Constraint Layout")
+                benchmark(1, times, com.chaozhang.layouts.R.layout.constraint_layout, "Constraint Layout")
             }
 
         }
         findViewById<View>(R.id.button_rl).setOnClickListener {
             reset()
             showRunPicker { times ->
-                benchmark(1, times, R.layout.relative_layout, "Relative Layout")
+                benchmark(1, times, com.chaozhang.layouts.R.layout.relative_layout, "Relative Layout")
             }
         }
     }
@@ -81,11 +78,14 @@ class BenchmarkActivity : AppCompatActivity() {
         inflateStart = System.nanoTime()
         val layout = layoutInflater.inflate(layoutId, containerView, false)
         inflateEnd = System.nanoTime()
+
+        val benchmarkableView = layout as BenchmarkableView
+
         containerView.addView(layout)
         containerView.postDelayed({
             inflateTotal += inflateEnd - inflateStart
-            measureTotal += onMeasureEnd - onMeasureStart
-            layoutTotal += onLayoutEnd - onLayoutStart
+            measureTotal += benchmarkableView.getOnMeasureEnd() - benchmarkableView.getOnMeasureStart()
+            layoutTotal += benchmarkableView.getOnLayoutEnd() - benchmarkableView.getOnLayoutStart()
             if (currentRun < totalRun) {
                 containerView.removeAllViews()
                 containerView.postDelayed({

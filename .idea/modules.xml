@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ConstraintLayoutBenchmark.iml" filepath="$PROJECT_DIR$/ConstraintLayoutBenchmark.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ConstraintLayoutBenchmark.iml" filepath="$PROJECT_DIR$/ConstraintLayoutBenchmark.iml" group="ConstraintLayoutBenchmark" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="ConstraintLayoutBenchmark/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/benchmark/benchmark.iml" filepath="$PROJECT_DIR$/.idea/modules/benchmark/benchmark.iml" group="ConstraintLayoutBenchmark/benchmark" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/layouts/layouts.iml" filepath="$PROJECT_DIR$/.idea/modules/layouts/layouts.iml" group="ConstraintLayoutBenchmark/layouts" />
     </modules>
   </component>
 </project>
